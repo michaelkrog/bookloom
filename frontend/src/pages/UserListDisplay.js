@@ -14,9 +14,10 @@ const UserListDisplay = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            //await userResource.authenticate('admin@bookloom', '7ba74011-7c66-48a1-b999-6c89a34b07b0');
             try {
                 const result = await userResource.findAll();
-                setData(result ?? [{ id: '123', name: 'Karl Hansen', email: 'karl@adamsen.dk' }]);
+                setData(result);
                 setIsLoading(false);
             } catch (err) {
                 setError(err);
