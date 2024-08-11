@@ -1,12 +1,21 @@
 package com.bookloom.user.models;
 
 import com.bookloom.shared.models.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.convert.ValueConverter;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.ExplicitEncrypted;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * Represents a user in the system.
@@ -39,6 +48,7 @@ public class User extends BaseEntity {
     @NotNull
     @Email
     @Size(max = 256)
+    @Indexed(unique = true)
     private String email;
 
     /**
@@ -46,4 +56,16 @@ public class User extends BaseEntity {
      */
     @NotNull
     private String password;
+
+    private Set<UserRole> roles = Set.of(UserRole.User);
+
+    /**
+     * Overrides getter to let Jackson ignore it when serializing it.
+     * @return The encrypted password.
+     */
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
 }
