@@ -4,6 +4,8 @@ import com.bookloom.shared.repositories.Repository;
 import com.bookloom.user.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.Optional;
+
 /**
  * Repository interface for managing {@link User} entities.
  *
@@ -18,4 +20,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @see MongoRepository
  */
 public interface UserRepository extends Repository<User>, MongoRepository<User, String> {
+    public Optional<User> findByEmail(String email);
 }

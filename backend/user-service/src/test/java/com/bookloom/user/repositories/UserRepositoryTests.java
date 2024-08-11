@@ -1,6 +1,6 @@
 package com.bookloom.user.repositories;
 
-import dk.tryg.codetest.michaelkrog.user.models.User;
+import com.bookloom.user.models.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
