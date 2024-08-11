@@ -2,7 +2,9 @@ package com.bookloom.user.controllers;
 
 import com.bookloom.shared.controllers.BaseController;
 import com.bookloom.user.models.User;
+import com.bookloom.user.services.JwtService;
 import com.bookloom.user.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public class UserController extends BaseController<User, UserService> {
 
+    @Autowired
+    private JwtService jwtService;
+
     /**
      * Constructs a new {@code UserController} with the specified {@link UserService}.
      *
@@ -37,8 +42,18 @@ public class UserController extends BaseController<User, UserService> {
         super(service);
     }
 
+    /**
+     * Handles the authentication request for the current user.
+     *
+     * This endpoint generates a JWT token for the currently authenticated user
+     * and returns it in the response. The token is used for authorizing future
+     * requests from the user.
+     *
+     * @return ResponseEntity containing a JwtResponse with the generated JWT token.
+     *         The HTTP status code is 200 OK if the token generation is successful.
+     */
     @PostMapping("/actions/authenticate")
     public ResponseEntity<JwtResponse> authenticate() {
-        return null;
+        return ResponseEntity.ok(new JwtResponse(jwtService.generateJwtTokenForCurrentUser()));
     }
 }

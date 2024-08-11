@@ -1,12 +1,15 @@
 package com.bookloom.shared.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -17,9 +20,13 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
+
+    @Autowired
+    private JwtAuthenticationFilter jwtFilter;
+
     /**
      * Configures Cross-Origin Resource Sharing (CORS) settings for the application.
-     *
+     * <p>
      * This bean defines a {@link WebMvcConfigurer} that sets up CORS mappings. Specifically, it allows requests from
      * "http://localhost:3000" to access resources from this application.
      *
@@ -43,6 +50,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated()
                 );
+
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         // Add Basic Auth
         http.httpBasic(Customizer.withDefaults());
@@ -77,4 +87,5 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", config);
         return source;
     }
+
 }

@@ -3,7 +3,15 @@ package com.bookloom.user.services;
 import com.bookloom.shared.repositories.Repository;
 import com.bookloom.shared.services.BaseService;
 import com.bookloom.user.models.User;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Service class for managing {@link User} entities.
@@ -24,6 +32,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService extends BaseService<User> {
 
+
     /**
      * Constructs a new {@code UserService} with the specified {@link Repository}.
      *
@@ -32,4 +41,5 @@ public class UserService extends BaseService<User> {
     public UserService(Repository<User> repository) {
         super(repository);
     }
+
 }

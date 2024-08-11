@@ -4,15 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import java.util.List;
-
 /**
  * The main entry point for the Spring Boot application.
  *
  * This class is annotated with {@link SpringBootApplication} which denotes that it is the primary Spring Boot configuration class.
  * It also enables MongoDB repositories through the {@link EnableMongoRepositories} annotation.
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.bookloom.shared", "com.bookloom.user"})
 @EnableMongoRepositories
 public class Application {
 
