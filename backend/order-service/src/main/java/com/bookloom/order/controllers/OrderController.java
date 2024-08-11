@@ -3,8 +3,6 @@ package com.bookloom.order.controllers;
 import com.bookloom.order.models.Order;
 import com.bookloom.order.services.OrderService;
 import com.bookloom.shared.controllers.BaseController;
-import com.bookloom.user.models.User;
-import com.bookloom.user.services.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
