@@ -3,6 +3,8 @@ package com.bookloom.user.controllers;
 import com.bookloom.shared.controllers.BaseController;
 import com.bookloom.user.models.User;
 import com.bookloom.user.services.UserService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +35,10 @@ public class UserController extends BaseController<User, UserService> {
      */
     public UserController(UserService service) {
         super(service);
+    }
+
+    @PostMapping("/actions/authenticate")
+    public ResponseEntity<JwtResponse> authenticate() {
+        return null;
     }
 }
