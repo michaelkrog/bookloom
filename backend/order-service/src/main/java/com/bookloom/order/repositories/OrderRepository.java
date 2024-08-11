@@ -5,7 +5,7 @@ import com.bookloom.shared.repositories.Repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * Repository interface for managing {@link OrderRepository} entities.
+ * Repository interface for managing {@link Order} entities.
  *
  * <p>
  * This interface extends both {@link Repository} and {@link MongoRepository} to provide
