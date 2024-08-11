@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-public class SecurityConfig {
+public class AuthenticationManagerConfig {
 
     @Autowired
     private BookloomUserDetailService userDetailService;
