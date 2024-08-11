@@ -45,7 +45,7 @@ public class Application {
 	 *
 	 * @return a {@link WebMvcConfigurer} instance with custom CORS configuration.
 	 */
-	@Bean
+	/*@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
@@ -97,5 +97,5 @@ public class Application {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", config);
 		return source;
-	}
+	}*/
 }
