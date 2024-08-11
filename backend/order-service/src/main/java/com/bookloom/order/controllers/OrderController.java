@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * REST controller for managing {@link User} entities.
+ * REST controller for managing {@link Order} entities.
  *
  * <p>
  * This controller extends {@link BaseController} to provide standard CRUD operations
- * for the {@link User} entity. It leverages the {@link UserService} for business logic
+ * for the {@link Order} entity. It leverages the {@link OrderService} for business logic
  * and data access.
  * </p>
  *
