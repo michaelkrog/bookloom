@@ -1,7 +1,6 @@
 package com.bookloom.book.repositories;
 
 import com.bookloom.book.models.Book;
-import com.bookloom.order.models.Order;
 import com.bookloom.shared.repositories.Repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
