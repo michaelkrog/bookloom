@@ -1,7 +1,7 @@
 package com.bookloom.order.repositories;
 
+import com.bookloom.order.models.Order;
 import com.bookloom.shared.repositories.Repository;
-import com.bookloom.user.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  *
  * <p>
  * This interface extends both {@link Repository} and {@link MongoRepository} to provide
- * comprehensive data access operations for {@link OrderRepository} entities. It combines the functionalities
+ * comprehensive data access operations for {@link Order} entities. It combines the functionalities
  * of a generic repository with those of a MongoDB-specific repository, enabling CRUD operations
  * and custom queries on the "orders" collection in MongoDB.
  * </p>
@@ -17,5 +17,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @see Repository
  * @see MongoRepository
  */
-public interface OrderRepository extends Repository<OrderRepository>, MongoRepository<OrderRepository, String> {
+public interface OrderRepository extends Repository<Order>, MongoRepository<Order, String> {
 }
