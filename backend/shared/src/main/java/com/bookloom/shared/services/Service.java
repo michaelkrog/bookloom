@@ -1,6 +1,7 @@
 package com.bookloom.shared.services;
 
 import com.bookloom.shared.models.BaseEntity;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

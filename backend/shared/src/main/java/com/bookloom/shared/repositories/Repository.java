@@ -4,6 +4,7 @@ import com.bookloom.shared.models.BaseEntity;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 /**
  * A generic repository interface for managing entities that extend from {@link BaseEntity}.
@@ -13,4 +14,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @param <T> the type of the entity, which must extend from {@link BaseEntity}.
  */
 @ConditionalOnExpression("false")
-public interface Repository<T extends BaseEntity> extends PagingAndSortingRepository<T, String>, CrudRepository<T, String> { }
+public interface Repository<T extends BaseEntity> extends PagingAndSortingRepository<T, String>,
+        CrudRepository<T, String>, QueryByExampleExecutor<T> { }

@@ -1,22 +1,20 @@
-// src/components/UserDisplay.js
 import React, { Fragment, useEffect, useState } from 'react';
-import userResource from '../resources/UserResource'; // Assume this is a service to fetch user data
+import bookResource from '../../resources/BookResource'; 
 
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom';
-import DataList from '../components/DataList';
-import DataListItem from '../components/DataListItem';
+import DataList from '../../components/DataList';
+import DataListItem from '../../components/DataListItem';
 
-const UserListDisplay = () => {
+const BookList = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            //await userResource.authenticate('admin@bookloom', '7ba74011-7c66-48a1-b999-6c89a34b07b0');
             try {
-                const result = await userResource.findAll();
+                const result = await bookResource.findAll();
                 setData(result);
                 setIsLoading(false);
             } catch (err) {
@@ -34,20 +32,20 @@ const UserListDisplay = () => {
     return (
 
         <DataList>
-            {data.map((user) => (
-                <DataListItem key={user.id} suffix={<ChevronRightIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />}>
+            {data.map((book) => (
+                <DataListItem key={book.id} suffix={<ChevronRightIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />}>
                     <Fragment>
-                        <img alt="" src={user.imageUrl ?? 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'} className="h-12 w-12 flex-none rounded-full bg-gray-50" />
+                        <img alt="" src={'data:image/png;base64,' + book.imageData} className="h-12 w-12 flex-none object-cover object-center sm:rounded-lg border-2 bg-gray-50" />
                         <div className="min-w-0 flex-auto">
                             <p className="text-sm font-semibold leading-6 text-gray-900">
-                                <Link to={user.id}>
+                                <Link to={book.id}>
                                     <span className="absolute inset-x-0 -top-px bottom-0" />
-                                    {user.name}
+                                    {book.title}
                                 </Link>
                             </p>
                             <p className="mt-1 flex text-xs leading-5 text-gray-500">
-                                <a href={`mailto:${user.email}`} className="relative truncate hover:underline">
-                                    {user.username}
+                                <a href={`mailto:${book.email}`} className="relative truncate hover:underline">
+                                    {book.author}
                                 </a>
                             </p>
                         </div>
@@ -60,5 +58,5 @@ const UserListDisplay = () => {
     );
 };
 
-export default UserListDisplay;
+export default BookList;
 

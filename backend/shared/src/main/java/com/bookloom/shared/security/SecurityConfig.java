@@ -1,6 +1,7 @@
 package com.bookloom.shared.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,6 +9,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -20,6 +22,10 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
+
+    @Autowired
+    @Qualifier("customAuthenticationEntryPoint")
+    AuthenticationEntryPoint authEntryPoint;
 
     @Autowired
     private JwtAuthenticationFilter jwtFilter;
@@ -48,6 +54,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/books/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
@@ -55,7 +62,7 @@ public class SecurityConfig {
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         // Add Basic Auth
-        http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint));
 
         // Configure CORS
         http.cors(cors -> configurationSource());

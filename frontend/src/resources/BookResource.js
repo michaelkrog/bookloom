@@ -3,7 +3,7 @@ import BaseResource from './BaseResource';
 class BookResource extends BaseResource{
   
   constructor() {
-    super('/books');
+    super('http://localhost:8081/books');
   }
 
 }

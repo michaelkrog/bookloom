@@ -1,9 +1,10 @@
+import authStore from '../stores/AuthStore';
 import BaseResource from './BaseResource';
 
 class UserResource extends BaseResource {
 
   constructor() {
-    super('/users');
+    super('http://localhost:8080/users');
   }
 
   /**
@@ -29,14 +30,18 @@ class UserResource extends BaseResource {
       headers.set('Authorization', `Basic ${btoa(token)}`);
 
       // Send a POST request to the authentication endpoint with the headers.
-      const response = await fetch(`http://localhost:8080${this.path}/actions/authenticate`, {
+      const response = await fetch(`${this.endpointUrl}/actions/authenticate`, {
         headers,
         method: 'POST'
       });
 
+      if(response.status !== 200) {
+        throw await response.json();
+      }
+
       // Parse the JSON response and store the token in localStorage.
       const result = await response.json();
-      localStorage.setItem('token', result.token);
+      authStore.setToken(result.token);
     } catch (error) {
       // Handle any errors that occur during the request.
       this.handleError(error);

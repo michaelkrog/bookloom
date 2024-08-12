@@ -1,6 +1,7 @@
 package com.bookloom.order.services;
 
 import com.bookloom.order.models.Order;
+import com.bookloom.order.repositories.OrderRepository;
 import com.bookloom.shared.repositories.Repository;
 import com.bookloom.shared.services.BaseService;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,14 @@ import org.springframework.stereotype.Service;
  * @see Repository
  */
 @Service
-public class OrderService extends BaseService<Order> {
+public class OrderService extends BaseService<Order, OrderRepository> {
 
     /**
      * Constructs a new {@code UserService} with the specified {@link Repository}.
      *
      * @param repository the {@link Repository} to use for handling user-related operations.
      */
-    public OrderService(Repository<Order> repository) {
+    public OrderService(OrderRepository repository) {
         super(repository);
     }
 }

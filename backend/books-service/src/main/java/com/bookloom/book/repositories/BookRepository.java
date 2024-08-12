@@ -17,5 +17,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @see Repository
  * @see MongoRepository
  */
-public interface BookRepository extends Repository<Book>, MongoRepository<Book, String> {
+public interface BookRepository extends Repository<Book>, MongoRepository<Book, String>, BookRepositoryCustom {
 }

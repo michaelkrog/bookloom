@@ -23,7 +23,7 @@ class BaseServiceTest {
     private Repository<TestEntity> repository;
 
     @InjectMocks
-    private BaseService<TestEntity> baseService;
+    private BaseService<TestEntity, Repository<TestEntity>> baseService;
 
     @BeforeEach
     void setUp() {

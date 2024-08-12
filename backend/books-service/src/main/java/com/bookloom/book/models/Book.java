@@ -60,5 +60,16 @@ public class Book extends BaseEntity {
      */
     private long price;
 
+    /**
+     * The image in jpg-format stored in Base64-encoding.
+     */
+    private String imageData;
+
+    /**
+     * The category the book belongs to.
+     */
+    @NotNull
+    private Category category = Category.Other;
+
 }
 

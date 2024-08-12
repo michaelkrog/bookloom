@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BaseController<T extends BaseEntity, S extends Service<T>> implements EntityOperations<T> {
 
-    private final S service;
+    protected final S service;
 
     /**
      * Retrieves an entity by its ID.

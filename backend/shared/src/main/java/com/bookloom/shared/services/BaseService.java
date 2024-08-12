@@ -3,6 +3,7 @@ package com.bookloom.shared.services;
 import com.bookloom.shared.models.BaseEntity;
 import com.bookloom.shared.repositories.Repository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.annotation.Secured;
@@ -18,9 +19,9 @@ import java.util.Optional;
  * @param <T> the type of the entity, which must extend from {@link BaseEntity}.
  */
 @RequiredArgsConstructor
-public class BaseService<T extends BaseEntity> implements Service<T> {
+public class BaseService<T extends BaseEntity, R extends Repository<T>> implements Service<T> {
 
-    private final Repository<T> repository;
+    protected final R repository;
 
     /**
      * Finds an entity by its ID, secured to allow only users with the "ROLE_USER" authority.

@@ -4,13 +4,18 @@ import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, TransitionChild } from '@headlessui/react'
 import {
   Bars3Icon,
+  BookOpenIcon,
+  DocumentTextIcon,
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { Link, Outlet, BrowserRouter as Router } from 'react-router-dom'
+import { Link, matchPath, Outlet, BrowserRouter as Router, useLocation } from 'react-router-dom'
+import authStore from '../stores/AuthStore'
 
 const navigation = [
-  { name: 'Users', href: 'users', icon: UsersIcon, current: false },
+  { name: 'Users', href: 'users', icon: UsersIcon, current: true },
+  { name: 'Books', href: 'books', icon: BookOpenIcon, current: false },
+  { name: 'Orders', href: 'orders', icon: DocumentTextIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -19,7 +24,12 @@ function classNames(...classes) {
 
 export default function AdminShell({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  console.log('Children: ', children);
+  const location = useLocation();
+
+  function isActive(item) {
+    return matchPath({ path: `/admin/${item.href}`}, location.pathname);
+  }
+
   return (
 
       <div>
@@ -45,11 +55,8 @@ export default function AdminShell({ children }) {
               {/* Sidebar component, swap this element with another sidebar if you like */}
               <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                 <div className="flex h-16 shrink-0 items-center">
-                  <img
-                    alt="Code test"
-                    src="/logo.svg"
-                    className="h-8 w-auto"
-                  />
+                  
+                  Bookloom admin
                 </div>
                 <nav className="flex flex-1 flex-col">
                   <ul className="flex flex-1 flex-col gap-y-7">
@@ -60,7 +67,7 @@ export default function AdminShell({ children }) {
                             <a
                               href={item.href}
                               className={classNames(
-                                item.current
+                                isActive(item)
                                   ? 'bg-gray-50 text-indigo-600'
                                   : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
                                 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
@@ -69,7 +76,7 @@ export default function AdminShell({ children }) {
                               <item.icon
                                 aria-hidden="true"
                                 className={classNames(
-                                  item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                                  isActive(item) ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
                                   'h-6 w-6 shrink-0',
                                 )}
                               />
@@ -92,11 +99,8 @@ export default function AdminShell({ children }) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="/logo.svg"
-                className="h-8 w-auto"
-              />
+
+              Bookloom admin
             </div>
             <nav className="flex flex-1 flex-col">
               <ul className="flex flex-1 flex-col gap-y-7">
@@ -107,7 +111,7 @@ export default function AdminShell({ children }) {
                         <Link
                           to={item.href}
                           className={classNames(
-                            item.current
+                            isActive(item)
                               ? 'bg-gray-50 text-indigo-600'
                               : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
                             'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
@@ -116,7 +120,7 @@ export default function AdminShell({ children }) {
                           <item.icon
                             aria-hidden="true"
                             className={classNames(
-                              item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                              isActive(item) ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
                               'h-6 w-6 shrink-0',
                             )}
                           />
@@ -138,7 +142,7 @@ export default function AdminShell({ children }) {
                       className="h-8 w-8 rounded-full bg-gray-50"
                     />
                     <span className="sr-only">Your profile</span>
-                    <span aria-hidden="true">Tom Cook</span>
+                    <span aria-hidden="true">{authStore.username}</span>
                   </a>
                 </li>
               </ul>

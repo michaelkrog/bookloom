@@ -1,9 +1,19 @@
 const filters = [
     {
+        id: 'author',
+        name: 'Author',
+        asArray: true,
+        options: [
+            { value: 'Daniel Kahneman', label: 'Daniel Kahneman' },
+            { value: 'Jason Fried', label: 'Jason Fried' },
+            { value: 'Simon Scarrow', label: 'Simon Scarrow' }
+        ],
+    },    {
         id: 'category',
         name: 'Category',
+        asArray: true,
         options: [
-            { value: 'ScienceFiction', label: 'Science Fiction' },
+            { value: 'Science', label: 'Science' },
             { value: 'Thriller', label: 'Thriller' },
             { value: 'Nature', label: 'Nature' },
             { value: 'Poetry', label: 'Poetry' },
@@ -11,8 +21,9 @@ const filters = [
         ],
     },
     {
-        id: 'prices',
+        id: 'price',
         name: 'Price',
+        asArray: false,
         options: [
             { value: '<10', label: '< 10$' },
             { value: '10-20', label: '10$ - 20$' },
