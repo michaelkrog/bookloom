@@ -35,7 +35,7 @@ import java.util.List;
 public class BookController extends BaseController<Book, BookService> {
 
     /**
-     * Constructs a new {@code UserController} with the specified {@link BookService}.
+     * Constructs a new {@code BookController} with the specified {@link BookService}.
      *
      * @param service the {@link BookService} to use for handling user-related operations.
      */
