@@ -79,8 +79,6 @@ Password: AdminTest
 Email: user@bookloom
 Password: UserTest
 
-**Remark:** Every service is started with 3 instances and requests will automatically round robin between them. See also [session management](#session-management).
-
 
 ### Integration tests
 Integration tests are skipped during build. They require a mongo server available at localhost:27017 without auth requirements.
