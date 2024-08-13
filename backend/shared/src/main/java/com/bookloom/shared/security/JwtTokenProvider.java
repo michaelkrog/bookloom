@@ -99,7 +99,7 @@ public class JwtTokenProvider {
      * @param auths Collection of granted authorities.
      * @return Array of roles as strings.
      */
-    private String[] rolesFromAuthorities(Collection<? extends GrantedAuthority> auths) {
+    protected String[] rolesFromAuthorities(Collection<? extends GrantedAuthority> auths) {
         return auths.stream()
                 .map(GrantedAuthority::getAuthority)
                 .toArray(String[]::new);
@@ -111,7 +111,7 @@ public class JwtTokenProvider {
      * @param roles List of role strings.
      * @return List of granted authorities.
      */
-    private List<GrantedAuthority> authoritiesFromRoles(List<String> roles) {
+    protected List<GrantedAuthority> authoritiesFromRoles(List<String> roles) {
         List<GrantedAuthority> auths = new ArrayList<>();
         roles.forEach(role -> auths.add(new SimpleGrantedAuthority(role)));
         return auths;
@@ -144,7 +144,7 @@ public class JwtTokenProvider {
      *
      * @return The signing key.
      */
-    private Key getSigningKey() {
+    protected Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(this.secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
