@@ -72,11 +72,11 @@ This will create a docker stack that contains all the services as well as the fr
 You can access the public UI without signing in. You can sign in at the top by clicking "Sign in". Use one of the following email/password combinations. (Default users)
 
 #### Admin user
-Email: admin@bookloom
+Email: admin@bookloom  
 Password: AdminTest
 
 #### Ordinary user
-Email: user@bookloom
+Email: user@bookloom  
 Password: UserTest
 
 
