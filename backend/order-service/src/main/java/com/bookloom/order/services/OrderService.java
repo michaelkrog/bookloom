@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 public class OrderService extends BaseService<Order, OrderRepository> {
 
     /**
-     * Constructs a new {@code UserService} with the specified {@link Repository}.
+     * Constructs a new {@code OrderService} with the specified {@link Repository}.
      *
      * @param repository the {@link Repository} to use for handling user-related operations.
      */
