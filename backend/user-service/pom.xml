@@ -54,7 +54,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>user-service:${version}</name>
+                        <name>user-service:${project.version}</name>
                     </image>
 
                     <excludes>
