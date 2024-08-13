@@ -1,0 +1,35 @@
+## Example Configuration for Previsto 
+---
+version: "3.9"
+services:
+  #kafka:
+  #    image: apache/kafka:3.8.0
+#
+#      ports:
+#        - "9092:9092"
+
+  mongo:
+      image: mongo:6
+      ports:
+        - "27017:27017"
+      volumes:
+        - './data:/data/db'
+
+  user-service:
+    image: docker.io/library/user-service:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"    
+    environment:
+      - "spring.data.mongodb.host=mongo"
+
+  books-service:
+    image: docker.io/library/books-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    environment:
+      - "spring.data.mongodb.host=mongo"
+
+  frontend:
+    image: bookloom-frontend
+    ports:
+      - "3000:3000"
