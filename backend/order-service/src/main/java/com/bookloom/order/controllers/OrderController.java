@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * <p>
- * The controller is mapped to handle HTTP requests to the "/users" endpoint.
+ * The controller is mapped to handle HTTP requests to the "/orders" endpoint.
  * </p>
  *
  * @see BaseController
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController extends BaseController<Order, OrderService> {
 
     /**
-     * Constructs a new {@code UserController} with the specified {@link OrderService}.
+     * Constructs a new {@code OrderController} with the specified {@link OrderService}.
      *
      * @param service the {@link OrderService} to use for handling user-related operations.
      */
