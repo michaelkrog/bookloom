@@ -49,7 +49,7 @@ public class BaseService<T extends BaseEntity, R extends Repository<T>> implemen
     }
 
     /**
-     * Saves a given entity, secured to allow only users with the "ROLE_USER" authority.
+     * Saves a given entity, secured to allow only users with the "ROLE_ADMIN" authority.
      * If the entity does not exist, it will be created; if it exists, it will be updated.
      *
      * @param entity the entity to save.
@@ -62,7 +62,7 @@ public class BaseService<T extends BaseEntity, R extends Repository<T>> implemen
     }
 
     /**
-     * Deletes a given entity, secured to allow only users with the "ROLE_USER" authority.
+     * Deletes a given entity, secured to allow only users with the "ROLE_ADMIN" authority.
      *
      * @param entity the entity to delete.
      */
