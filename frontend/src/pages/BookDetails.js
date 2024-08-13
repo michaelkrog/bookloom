@@ -3,6 +3,35 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import bookResource from '../resources/BookResource';
 
+/**
+ * BookDetails Component
+ * 
+ * This component displays detailed information about a single book. It fetches book details based on the book ID from the URL parameters and displays the book cover, title, price, and description.
+ * 
+ * Features:
+ * - Fetches book data from `bookResource` using the `id` parameter from the URL.
+ * - Displays the book's cover image, title, price, and description.
+ * - Includes buttons for adding the book to a shopping bag (not yet implemented) and an empty button for future actions.
+ * - Manages component state for loading, data, and error handling using React hooks (`useState` and `useEffect`).
+ * 
+ * Usage:
+ * ```jsx
+ * import BookDetails from './BookDetails';
+ * 
+ * function App() {
+ *   return (
+ *     <div>
+ *       <BookDetails />
+ *     </div>
+ *   );
+ * }
+ * ```
+ * 
+ * @component
+ * @example
+ * // BookDetails component fetches and displays detailed information about a book
+ * <BookDetails />
+ */
 export default function BookDetails() {
     const { id } = useParams();
 

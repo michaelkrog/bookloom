@@ -2,6 +2,53 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 
+/**
+ * FilterDropdown Component
+ * 
+ * This component provides a dropdown menu for filtering options. It allows users to select multiple options (when `asArray` is true)
+ * or a single option (when `asArray` is false). The selected filters are passed to a callback function `onFilterChange` for processing.
+ * 
+ * Props:
+ * - `id` (string): The unique identifier for the filter, used to differentiate multiple filters.
+ * - `name` (string): The label displayed on the dropdown button, indicating the filter's name.
+ * - `options` (array): An array of filter options. Each option should be an object with the following properties:
+ *   - `value` (string): The value of the option.
+ *   - `label` (string): The label of the option displayed in the dropdown.
+ * - `onFilterChange` (function): A callback function triggered when the selected filter options change. Receives the updated filter value(s) as an argument.
+ * - `asArray` (boolean): Determines whether multiple options can be selected (`true` for multi-select) or only a single option (`false` for single-select).
+ * 
+ * State:
+ * - `filter` (array or string): Stores the selected filter value(s). It's an array if `asArray` is true, otherwise a string.
+ * 
+ * Usage:
+ * ```jsx
+ * const options = [
+ *   { value: 'option1', label: 'Option 1' },
+ *   { value: 'option2', label: 'Option 2' },
+ * ];
+ * 
+ * <FilterDropdown
+ *   id="category"
+ *   name="Category"
+ *   options={options}
+ *   onFilterChange={(selectedFilter) => console.log(selectedFilter)}
+ *   asArray={true}
+ * />
+ * ```
+ * 
+ * @component
+ * @example
+ * <FilterDropdown
+ *   id="color"
+ *   name="Color"
+ *   options={[
+ *     { value: 'red', label: 'Red' },
+ *     { value: 'blue', label: 'Blue' }
+ *   ]}
+ *   onFilterChange={(selectedFilter) => console.log(selectedFilter)}
+ *   asArray={true}
+ * />
+ */
 export default function FilterDropdown({id, name, options, onFilterChange, asArray}){
     const [filter, setFilter] = useState(asArray ? [] : undefined);
 

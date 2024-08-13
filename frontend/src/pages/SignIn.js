@@ -2,6 +2,35 @@ import { useState } from "react"
 import userResource from '../resources/UserResource';
 import { useNavigate } from "react-router-dom";
 
+/**
+ * SignIn Component
+ * 
+ * This component provides a sign-in form where users can authenticate themselves by providing their email and password. It uses the `userResource` for authentication and handles navigation upon successful sign-in using the `useNavigate` hook from `react-router-dom`.
+ * 
+ * Features:
+ * - User input fields for email and password.
+ * - A button to trigger the sign-in process.
+ * - Navigation to the home page upon successful authentication.
+ * - Error handling with an alert message if authentication fails.
+ * 
+ * Usage:
+ * ```jsx
+ * import SignIn from './SignIn';
+ * 
+ * function App() {
+ *   return (
+ *     <div>
+ *       <SignIn />
+ *     </div>
+ *   );
+ * }
+ * ```
+ * 
+ * @component
+ * @example
+ * // SignIn component displays a form for user authentication
+ * <SignIn />
+ */
 export default function SignIn() {
     const [email, setEmail ] = useState();
     const [password, setPassword ] = useState();

@@ -3,7 +3,47 @@ import authStore from "../stores/AuthStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/20/solid";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
+/**
+ * UserLinks Component
+ * 
+ * This component provides different sets of navigation links and user actions based on the user's role.
+ * It uses MobX for state management and dynamically updates the displayed options according to the user's authentication status and roles.
+ * 
+ * Roles and Corresponding Links:
+ * - **Admin** (`ROLE_ADMIN`): Displays a user menu with a sign-out option and a link to the admin interface.
+ * - **User** (`ROLE_USER`): Displays a user menu with a sign-out option.
+ * - **Unauthenticated**: Displays links for signing in and creating an account.
+ * 
+ * Internal Functions:
+ * - `signOut()`: Logs out the current user by calling `authStore.logout()`.
+ * - `renderUserMenu()`: Renders a dropdown menu with the current user's name and a sign-out option.
+ * 
+ * Usage:
+ * ```jsx
+ * import UserLinks from './UserLinks';
+ * 
+ * function App() {
+ *   return (
+ *     <div className="header">
+ *       <UserLinks />
+ *     </div>
+ *   );
+ * }
+ * ```
+ * 
+ * @component
+ * @example
+ * // If the user has 'ROLE_ADMIN':
+ * <UserLinks />
+ * 
+ * // If the user has 'ROLE_USER':
+ * <UserLinks />
+ * 
+ * // If the user is not authenticated:
+ * <UserLinks />
+ */
 const UserLinks = observer(() => {
 
     function signOut() {
@@ -44,9 +84,9 @@ const UserLinks = observer(() => {
         return (
             <div className="flex items-center space-x-6">
                 {renderUserMenu()}
-                <a href="/admin/users" className="text-sm font-medium text-white hover:text-gray-100">
+                <Link to="/admin/users" className="text-sm font-medium text-white hover:text-gray-100">
                     Admin interface
-                </a>
+                </Link>
             </div>
         );
     } else if (authStore.roles.includes('ROLE_USER')) {
@@ -59,9 +99,9 @@ const UserLinks = observer(() => {
         return (
 
             <div className="flex items-center space-x-6">
-                <a href="/signin" className="text-sm font-medium text-white hover:text-gray-100">
+                <Link to="/signin" className="text-sm font-medium text-white hover:text-gray-100">
                     Sign in
-                </a>
+                </Link>
                 <a href="#" className="text-sm font-medium text-white hover:text-gray-100">
                     Create an account
                 </a>

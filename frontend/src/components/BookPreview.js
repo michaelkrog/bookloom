@@ -1,5 +1,34 @@
 import { Link } from "react-router-dom";
 
+/**
+ * BookPreview Component
+ * 
+ * This component displays a preview of a book, including its cover image, title, and price.
+ * When clicked, it navigates to a detailed page for the book using React Router's `Link` component.
+ * 
+ * Props:
+ * - `book` (object): The book object containing details to be displayed. 
+ *    - `id` (string): The unique identifier for the book, used in the URL for the detailed page.
+ *    - `title` (string): The title of the book.
+ *    - `imageData` (string): Base64-encoded image data representing the book cover.
+ *    - `price` (number): The price of the book in cents, which is converted to dollars and formatted as USD currency.
+ * 
+ * Usage:
+ * ```jsx
+ * const book = {
+ *   id: '123',
+ *   title: 'The Great Gatsby',
+ *   imageData: 'iVBORw0KGgoAAAANSUhEUgAA...',
+ *   price: 1500, // price in cents
+ * };
+ * 
+ * <BookPreview book={book} />
+ * ```
+ * 
+ * @component
+ * @example
+ * <BookPreview book={{ id: '123', title: 'The Great Gatsby', imageData: 'iVBORw0KGgoAAAANSUhEUgAA...', price: 1500 }} />
+ */
 export default function BookPreview({ book }) {
 
     return (

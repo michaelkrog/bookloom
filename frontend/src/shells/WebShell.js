@@ -45,11 +45,38 @@ const footerNavigation = {
   ],
 }
 
+/**
+ * WebShell Component
+ * 
+ * The `WebShell` component provides a layout structure for the web application, including navigation, a footer, and responsive design elements. It features a mobile menu and filter dialog, a top navigation bar with user links and cart, and a footer with various sitemap sections.
+ * 
+ * Features:
+ * - **Mobile Menu:** Toggles open and close with a button, includes links for navigation.
+ * - **Top Navigation Bar:** Includes user links, a logo, a cart icon, and a mobile menu button.
+ * - **Mobile Filters:** A dialog for filters that is visible on small screens.
+ * - **Footer:** Contains sections for products, company information, and customer service with links.
+ * 
+ * @component
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - The content to be rendered inside the main section of the layout.
+ * 
+ * @example
+ * import WebShell from './WebShell';
+ * 
+ * function WebPage() {
+ *   return (
+ *     <WebShell>
+ *       {/ Page content goes here /}
+ *     </WebShell>
+ *   );
+ * }
+ * 
+ * @returns {JSX.Element} The rendered WebShell component.
+ */
 export default function WebShell({children}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
-  console.log('Children: ', children);
   return (
     <div className="bg-gray-50">
       <div>
@@ -105,14 +132,9 @@ export default function WebShell({children}) {
                   <div className="hidden lg:flex lg:flex-1 lg:items-center gap-3">
                     <a href="/">
                       <span className="sr-only">Bookloom</span>
-                      <img
-                        alt=""
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        className="h-8 w-auto"
-                      />
-                     
+                      Bookloom
                     </a>
-                    Bookloom
+                    
                   </div>
 
                   <div className="hidden h-full lg:flex">
@@ -139,12 +161,8 @@ export default function WebShell({children}) {
 
                   {/* Logo (lg-) */}
                   <a href="#" className="lg:hidden">
-                    <span className="sr-only">Your Company</span>
-                    <img
-                      alt=""
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                      className="h-8 w-auto"
-                    />
+                    <span className="sr-only">Bookloom</span>
+                    Bookloom
                   </a>
 
                   <div className="flex flex-1 items-center justify-end">
@@ -253,11 +271,7 @@ export default function WebShell({children}) {
               <div className="grid grid-cols-1 md:grid-flow-col md:auto-rows-min md:grid-cols-12 md:gap-x-8 md:gap-y-16">
                 {/* Image section */}
                 <div className="col-span-1 md:col-span-2 lg:col-start-1 lg:row-start-1">
-                  <img
-                    alt=""
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
-                  />
+                  Bookloom
                 </div>
 
                 {/* Sitemap sections */}

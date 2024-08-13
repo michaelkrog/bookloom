@@ -1,6 +1,38 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useParams } from 'react-router-dom';
 
+/**
+ * UserEditor Component
+ * 
+ * This component provides a user interface for editing user details and notification preferences. It includes two main sections:
+ * 
+ * 1. **Personal Information**: Allows users to edit their personal details including name, email, address, city, state/province, and postal code.
+ * 2. **Notifications**: Allows users to configure their email and push notification preferences.
+ * 
+ * The form includes validation styles and a submission button to save changes. The `useParams` hook is used to retrieve the user ID from the route parameters.
+ * 
+ * Features:
+ * - Personal information editing with fields for name, email, address, city, state/province, and postal code.
+ * - Notification settings with options to select email and push notification preferences.
+ * 
+ * Usage:
+ * ```jsx
+ * import UserEditor from './UserEditor';
+ * 
+ * function App() {
+ *   return (
+ *     <div>
+ *       <UserEditor />
+ *     </div>
+ *   );
+ * }
+ * ```
+ * 
+ * @component
+ * @example
+ * // UserEditor component allows users to edit their details and notification preferences
+ * <UserEditor />
+ */
 export default function UserEditor() {
   const { id } = useParams();
   return (

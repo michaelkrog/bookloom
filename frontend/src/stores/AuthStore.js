@@ -2,7 +2,15 @@
 import { makeAutoObservable } from 'mobx';
 import { jwtDecode } from "jwt-decode";
 
-
+/**
+ * AuthStore Class
+ * 
+ * The `AuthStore` class manages authentication-related state, including the JWT token, username, roles, and token expiration. It uses MobX for state management and provides methods for setting and clearing authentication data.
+ * 
+ * The store maintains authentication information, handles token expiration, and provides utility methods to check if a user is authenticated and to log out.
+ * 
+ * @class
+ */
 class AuthStore {
   token = null;
   username = null;

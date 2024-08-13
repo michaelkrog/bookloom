@@ -6,6 +6,46 @@ import { Link } from 'react-router-dom';
 import DataList from '../../components/DataList';
 import DataListItem from '../../components/DataListItem';
 
+/**
+ * BookList Component
+ * 
+ * This component fetches and displays a list of books. It handles loading states, error states, and renders each book
+ * with its title and author. Each book is displayed as an item in a list, and the book's details are shown using `DataList`
+ * and `DataListItem` components.
+ * 
+ * State:
+ * - `data` (Array): Stores the fetched book data.
+ * - `isLoading` (boolean): Indicates if the data is still being fetched.
+ * - `error` (Error|null): Holds any error that occurs during data fetching.
+ * 
+ * Effects:
+ * - Fetches book data on component mount using `useEffect`.
+ * - Updates the state based on the result of the fetch operation.
+ * 
+ * Rendering:
+ * - Displays a loading message if data is still being fetched.
+ * - Displays an error message if there is an error fetching data.
+ * - Renders a list of books with their image, title, and author. Each book item is clickable and leads to a detailed view.
+ * 
+ * Usage:
+ * ```jsx
+ * import BookList from './BookList';
+ * 
+ * function App() {
+ *   return (
+ *     <div>
+ *       <BookList />
+ *     </div>
+ *   );
+ * }
+ * ```
+ * 
+ * @component
+ * @example
+ * // BookList component will handle loading and error states
+ * <BookList />
+ */
+
 const BookList = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

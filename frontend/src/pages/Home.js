@@ -3,6 +3,35 @@ import bookResource from '../resources/BookResource';
 import { useEffect, useState } from 'react';
 import BookFilter from '../components/BookFilter';
 
+/**
+ * Home Component
+ * 
+ * This component serves as the main page for displaying a list of books. It fetches and displays book data from `bookResource`, with the ability to filter and sort the books using the `BookFilter` component. The `BookPreview` component is used to render each individual book.
+ * 
+ * Features:
+ * - Fetches and displays a list of books using the `bookResource.findAll` method.
+ * - Provides filtering and sorting options via the `BookFilter` component.
+ * - Manages component state for the book data, page request parameters (including sort and filter), and loading/error states using React hooks (`useState` and `useEffect`).
+ * - Renders a grid of book previews with the `BookPreview` component.
+ * 
+ * Usage:
+ * ```jsx
+ * import Home from './Home';
+ * 
+ * function App() {
+ *   return (
+ *     <div>
+ *       <Home />
+ *     </div>
+ *   );
+ * }
+ * ```
+ * 
+ * @component
+ * @example
+ * // Home component displays a list of books with filtering and sorting options
+ * <Home />
+ */
 export default function Home() {
 
     const [data, setData] = useState([]);

@@ -22,6 +22,34 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+/**
+ * AdminShell Component
+ * 
+ * The `AdminShell` component serves as the main layout for the admin interface. It includes a sidebar with navigation links and a top bar for mobile views. The sidebar and top bar are designed to help users navigate through different sections of the admin panel. The sidebar includes links for Users, Books, and Orders, and shows a profile section with the user's avatar and name.
+ * 
+ * Features:
+ * - Responsive sidebar that can be toggled open and closed on mobile devices.
+ * - Static sidebar for larger screens.
+ * - Dynamic highlighting of the current active route.
+ * - Top bar for mobile devices that includes a menu button to open the sidebar and displays the user profile.
+ * 
+ * @component
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - The content to be rendered inside the main section of the layout.
+ * 
+ * @example
+ * import AdminShell from './AdminShell';
+ * 
+ * function AdminPage() {
+ *   return (
+ *     <AdminShell>
+ *       {/ Page content goes here /}
+ *     </AdminShell>
+ *   );
+ * }
+ * 
+ * @returns {JSX.Element} The rendered AdminShell component.
+ */
 export default function AdminShell({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const location = useLocation();
@@ -138,7 +166,7 @@ export default function AdminShell({ children }) {
                   >
                     <img
                       alt=""
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src="/avatar.avif"
                       className="h-8 w-8 rounded-full bg-gray-50"
                     />
                     <span className="sr-only">Your profile</span>
@@ -160,7 +188,7 @@ export default function AdminShell({ children }) {
             <span className="sr-only">Your profile</span>
             <img
               alt=""
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src="/avatar.avif"
               className="h-8 w-8 rounded-full bg-gray-50"
             />
           </a>

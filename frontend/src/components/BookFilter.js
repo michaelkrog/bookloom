@@ -5,6 +5,38 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { CheckIcon } from "@heroicons/react/20/solid";
 import FilterDropdown from "./FilterDropdown";
 
+/**
+ * BookFilter Component
+ * 
+ * This component provides a user interface for sorting and filtering a list of books.
+ * It allows users to choose a sorting order (e.g., by price) and apply various filters
+ * to the book list. The component uses the Headless UI library for dropdown menus and popovers.
+ * 
+ * Props:
+ * - `onSortChange` (function): A callback function that is triggered when the sorting option changes.
+ * - `onFilterChange` (function): A callback function that is triggered when any filter is applied or changed.
+ * 
+ * Internal State:
+ * - `sort` (string): Holds the currently selected sorting option.
+ * - `filter` (object): Holds the current filter criteria applied by the user.
+ * 
+ * Usage:
+ * ```jsx
+ * <BookFilter onSortChange={handleSortChange} onFilterChange={handleFilterChange} />
+ * ```
+ * 
+ * @component
+ * @example
+ * const handleSortChange = (sortOption) => {
+ *   // Update the book list based on the selected sort option
+ * };
+ * 
+ * const handleFilterChange = (filters) => {
+ *   // Update the book list based on the applied filters
+ * };
+ * 
+ * <BookFilter onSortChange={handleSortChange} onFilterChange={handleFilterChange} />
+ */
 export default function BookFilter({onSortChange, onFilterChange}) {
     const [sort, setSort] = useState('price');
     const [filter, setFilter] = useState({});
