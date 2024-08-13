@@ -173,7 +173,7 @@ Any user can currently retrieve any orders.
 When an event is received, the service retrieves user information from the user service and sends a notification to the user based on the event type.
 
 ### Shared
-The shared module holds generic security config, super classes and more. Every service includes this a builds its controllers, service-layer and repositories upon it.
+The shared module holds generic security config, super classes and more. Every service includes this and builds its controllers, service-layer and repositories upon it.
 
 ### Generic future enhancements
 None of the services currently allows for configuring outside of what Spring offers out of the box. But some things are currently hardcoded (like secrets for JWT, password for admin user etc.) and it should rather be configurable via application.properties and/or environment variables.
