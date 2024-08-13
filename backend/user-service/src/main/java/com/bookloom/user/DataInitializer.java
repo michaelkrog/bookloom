@@ -29,14 +29,19 @@ public class DataInitializer  {
     @PostConstruct
     public void initData() {
         if(repository.count() == 0) {
-            var randomPassword = UUID.randomUUID().toString();
+            var admin = new User();
+            admin.setName("Admin");
+            admin.setEmail("admin@bookloom");
+            admin.setRoles(Set.of(UserRole.User, UserRole.Admin));
+            admin.setPassword(passwordEncoder.encode("AdminTest"));
+            repository.save(admin);
+
             var user = new User();
-            user.setName("Admin");
-            user.setEmail("admin@bookloom");
-            user.setRoles(Set.of(UserRole.User, UserRole.Admin));
-            user.setPassword(passwordEncoder.encode(randomPassword));
+            user.setName("John Doe");
+            user.setEmail("user@bookloom");
+            user.setRoles(Set.of(UserRole.User));
+            user.setPassword(passwordEncoder.encode("UserTest"));
             repository.save(user);
-            LOG.info("\n\nInitialized admin user.\nPassword: {}\n\n", randomPassword);
         }
     }
 }
