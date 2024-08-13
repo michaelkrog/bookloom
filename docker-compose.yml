@@ -2,12 +2,6 @@
 ---
 version: "3.9"
 services:
-  #kafka:
-  #    image: apache/kafka:3.8.0
-#
-#      ports:
-#        - "9092:9092"
-
   mongo:
       image: mongo:6
       ports:
@@ -30,6 +24,6 @@ services:
       - "spring.data.mongodb.host=mongo"
 
   frontend:
-    image: bookloom-frontend
+    image: bookloom-frontend:0.0.1
     ports:
       - "3000:3000"
