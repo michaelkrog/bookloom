@@ -10,12 +10,12 @@ import javax.naming.AuthenticationException;
 @RestControllerAdvice
 public class RestExceptionHandlerAdvice {
     @ExceptionHandler(Exception.class)
-    ProblemDetail handleNotFoundException(Exception e) {
+    ProblemDetail handleException(Exception e) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
     }
 
     @ExceptionHandler(AuthenticationException.class)
-    ProblemDetail handleNotFoundException(AuthenticationException e) {
+    ProblemDetail handleException(AuthenticationException e) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, e.getMessage());
     }
 }
