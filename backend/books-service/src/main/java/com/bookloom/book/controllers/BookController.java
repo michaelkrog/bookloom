@@ -24,7 +24,7 @@ import java.util.List;
  * </p>
  *
  * <p>
- * The controller is mapped to handle HTTP requests to the "/users" endpoint.
+ * The controller is mapped to handle HTTP requests to the "/books" endpoint.
  * </p>
  *
  * @see BaseController
