@@ -56,7 +56,7 @@ public class BaseService<T extends BaseEntity, R extends Repository<T>> implemen
      * @return the saved entity.
      */
     @Override
-    @Secured({ "ROLE_USER" })
+    @Secured({ "ROLE_ADMIN" })
     public T save(T entity) {
         return repository.save(entity);
     }
@@ -67,7 +67,7 @@ public class BaseService<T extends BaseEntity, R extends Repository<T>> implemen
      * @param entity the entity to delete.
      */
     @Override
-    @Secured({ "ROLE_USER" })
+    @Secured({ "ROLE_ADMIN" })
     public void delete(T entity) {
         repository.delete(entity);
     }
