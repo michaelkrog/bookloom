@@ -31,7 +31,7 @@ import java.util.Collection;
 public class BookService extends BaseService<Book, BookRepository> {
 
     /**
-     * Constructs a new {@code UserService} with the specified {@link Repository}.
+     * Constructs a new {@code BookService} with the specified {@link Repository}.
      *
      * @param repository the {@link Repository} to use for handling user-related operations.
      */
