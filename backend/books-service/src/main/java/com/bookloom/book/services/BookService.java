@@ -1,6 +1,7 @@
 package com.bookloom.book.services;
 
 import com.bookloom.book.models.Book;
+import com.bookloom.book.models.Category;
 import com.bookloom.book.repositories.BookRepository;
 import com.bookloom.shared.repositories.Repository;
 import com.bookloom.shared.services.BaseService;
@@ -39,7 +40,7 @@ public class BookService extends BaseService<Book, BookRepository> {
     }
 
 
-    public Page<Book> findAll(Collection<String> authors, Collection<String> categories, int minPrice, int maxPrice, Pageable pageable) {
+    public Page<Book> findAll(Collection<String> authors, Collection<Category> categories, int minPrice, int maxPrice, Pageable pageable) {
         return repository.findAll(authors, categories, minPrice, maxPrice, pageable);
     }
 }

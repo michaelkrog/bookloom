@@ -1,6 +1,7 @@
 package com.bookloom.book.controllers;
 
 import com.bookloom.book.models.Book;
+import com.bookloom.book.models.Category;
 import com.bookloom.book.services.BookService;
 import com.bookloom.shared.controllers.BaseController;
 import org.springframework.data.domain.Example;
@@ -44,7 +45,7 @@ public class BookController extends BaseController<Book, BookService> {
 
     @GetMapping(path = "", params = "filtered=true")
     public ResponseEntity<List<Book>> list(Pageable pageable, @RequestParam(required = false) String price,
-                                           @RequestParam(required = false) List<String> author, @RequestParam(required = false) List<String> category) {
+                                           @RequestParam(required = false) List<String> author, @RequestParam(required = false) List<Category> category) {
         int minPrice = 0;
         int maxPrice = Integer.MAX_VALUE;
         if("<10".equals(price)) {

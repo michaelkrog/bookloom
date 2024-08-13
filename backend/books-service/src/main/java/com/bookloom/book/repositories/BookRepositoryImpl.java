@@ -1,6 +1,7 @@
 package com.bookloom.book.repositories;
 
 import com.bookloom.book.models.Book;
+import com.bookloom.book.models.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,7 +19,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
 
 
     @Override
-    public Page<Book> findAll(Collection<String> authors, Collection<String> categories, int minPrice, int maxPrice, Pageable pageable) {
+    public Page<Book> findAll(Collection<String> authors, Collection<Category> categories, int minPrice, int maxPrice, Pageable pageable) {
         var query = new Query(where("price").gte(minPrice).lt(maxPrice));
 
         if(authors != null && !authors.isEmpty()) {
