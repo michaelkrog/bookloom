@@ -1,9 +1,11 @@
 package com.bookloom.shared.controllers;
 
+import com.bookloom.shared.controllers.bind.annotation.RequestFilter;
 import com.bookloom.shared.models.BaseEntity;
 import com.bookloom.shared.services.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -40,8 +42,8 @@ public class BaseController<T extends BaseEntity, S extends Service<T>> implemen
      * @return a {@link ResponseEntity} containing a list of entities.
      */
     @Override
-    public ResponseEntity<List<T>> list(Pageable pageable) {
-        return ResponseEntity.ok(service.findAll(pageable).getContent());
+    public ResponseEntity<List<T>> list(Pageable pageable, @RequestFilter Query query) {
+        return ResponseEntity.ok(service.findAll(pageable, query).getContent());
     }
 
     /**

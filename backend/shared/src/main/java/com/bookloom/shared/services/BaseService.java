@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.access.annotation.Secured;
 
 import java.util.Optional;
@@ -44,8 +45,8 @@ public class BaseService<T extends BaseEntity, R extends Repository<T>> implemen
      */
     @Override
     @Secured({ "ROLE_USER" })
-    public Page<T> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public Page<T> findAll(Pageable pageable, Query query) {
+        return repository.findAll(pageable, query);
     }
 
     /**

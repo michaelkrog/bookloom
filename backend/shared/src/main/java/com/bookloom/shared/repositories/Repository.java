@@ -2,6 +2,8 @@ package com.bookloom.shared.repositories;
 
 import com.bookloom.shared.models.BaseEntity;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
@@ -15,4 +17,7 @@ import org.springframework.data.repository.query.QueryByExampleExecutor;
  */
 @ConditionalOnExpression("false")
 public interface Repository<T extends BaseEntity> extends PagingAndSortingRepository<T, String>,
-        CrudRepository<T, String>, QueryByExampleExecutor<T> { }
+        CrudRepository<T, String>, QueryableRepository<T> {
+
+
+}

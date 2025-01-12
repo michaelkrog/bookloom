@@ -2,6 +2,7 @@ package com.bookloom.book.repositories;
 
 import com.bookloom.book.models.Book;
 import com.bookloom.book.models.Category;
+import com.bookloom.shared.repositories.BaseRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -12,7 +13,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.*;
 
 import java.util.Collection;
 
-public class BookRepositoryImpl implements BookRepositoryCustom {
+public class BookRepositoryImpl extends BaseRepositoryImpl<Book> implements BookRepositoryCustom {
 
     @Autowired
     private MongoTemplate template;

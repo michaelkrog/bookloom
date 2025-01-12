@@ -4,6 +4,7 @@ import com.bookloom.shared.models.BaseEntity;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public interface Service<T extends BaseEntity> {
      * @param pageable the pagination information, including page number, size, and sorting details.
      * @return a {@link Page} containing a list of entities that match the pagination criteria.
      */
-    public Page<T> findAll(Pageable pageable);
+    public Page<T> findAll(Pageable pageable, Query query);
 
     /**
      * Saves a given entity.
