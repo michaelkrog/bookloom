@@ -37,10 +37,24 @@ public class BaseService<T extends BaseEntity, R extends Repository<T>> implemen
         return repository.findById(id);
     }
 
+
     /**
      * Retrieves all entities with pagination, secured to allow only users with the "ROLE_USER" authority.
      *
      * @param pageable the pagination information, including page number, size, and sorting details.
+     * @return a {@link Page} containing a list of entities that match the pagination criteria.
+     */
+    @Override
+    @Secured({ "ROLE_USER" })
+    public Page<T> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
+    /**
+     * Retrieves all entities with pagination, secured to allow only users with the "ROLE_USER" authority.
+     *
+     * @param pageable the pagination information, including page number, size, and sorting details.
+     * @param query the query for filtering the data.
      * @return a {@link Page} containing a list of entities that match the pagination criteria.
      */
     @Override

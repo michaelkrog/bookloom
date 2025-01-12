@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
@@ -61,14 +62,15 @@ class BaseControllerTest {
         var entity = new TestEntity();
         Pageable pageable = Pageable.unpaged();
         Page<BaseEntity> page = new PageImpl<>(Collections.singletonList(entity));
-        when(service.findAll(pageable)).thenReturn(page);
+        var query = new Query();
+        when(service.findAll(any(Pageable.class), any(Query.class))).thenReturn(page);
 
-        ResponseEntity<List<BaseEntity>> response = baseController.list(pageable);
+        ResponseEntity<List<BaseEntity>> response = baseController.list(pageable, query);
 
         assertNotNull(response);
         assertEquals(1, response.getBody().size());
         assertTrue(response.getBody().contains(entity));
-        verify(service, times(1)).findAll(pageable);
+        verify(service, times(1)).findAll(pageable, query);
     }
 
     @Test

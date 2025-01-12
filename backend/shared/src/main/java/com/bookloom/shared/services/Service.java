@@ -32,6 +32,15 @@ public interface Service<T extends BaseEntity> {
      * @param pageable the pagination information, including page number, size, and sorting details.
      * @return a {@link Page} containing a list of entities that match the pagination criteria.
      */
+    public Page<T> findAll(Pageable pageable);
+
+    /**
+     * Retrieves all entities, with pagination and query filter support.
+     *
+     * @param pageable the pagination information, including page number, size, and sorting details.
+     * @param query the filter for querying data.
+     * @return a {@link Page} containing a list of entities that match the pagination and query criteria.
+     */
     public Page<T> findAll(Pageable pageable, Query query);
 
     /**
